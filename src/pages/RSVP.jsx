@@ -31,16 +31,16 @@ export default function RSVP() {
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-b from-pink-100 to-pink-200 flex flex-col justify-center items-center text-center py-20 overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-b from-[#FFF1D6] to-[#FFEAAB] flex flex-col justify-center items-center text-center py-20 overflow-hidden">
       
       {/* Fondo flotante */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div className="animate-float absolute w-20 h-20 bg-pink-300 rounded-full opacity-50 top-10 left-5"></div>
-        <div className="animate-float-slow absolute w-32 h-32 bg-pink-400 rounded-full opacity-40 top-1/2 left-3/4"></div>
-        <div className="animate-float absolute w-16 h-16 bg-pink-200 rounded-full opacity-60 top-3/4 left-1/4"></div>
+        <div className="animate-float absolute w-20 h-20 bg-[#C2AE8F] rounded-full opacity-50 top-10 left-5"></div>
+        <div className="animate-float-slow absolute w-32 h-32 bg-[#C2AE8F] rounded-full opacity-40 top-1/2 left-3/4"></div>
+        <div className="animate-float absolute w-16 h-16 bg-[#C2AE8F] rounded-full opacity-60 top-3/4 left-1/4"></div>
       </div>
 
-      <h2 className="text-5xl md:text-6xl font-bold text-pink-600 mb-10 z-10 drop-shadow-lg">
+      <h2 className="text-5xl md:text-6xl font-bold text-[#C2AE8F] mb-10 z-10 drop-shadow-lg">
         Confirma tu asistencia 💌
       </h2>
 
@@ -55,12 +55,12 @@ export default function RSVP() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className="w-full border border-pink-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-pink-400 transition"
+            className="w-full border border-[#C2AE8F] rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-[#D9BC8D] transition"
           />
           <select
             value={attending}
             onChange={(e) => setAttending(e.target.value)}
-            className="w-full border border-pink-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-pink-400 transition"
+            className="w-full border border-[#C2AE8F] rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-[#D9BC8D] transition"
           >
             <option value="Sí">Sí asistiré</option>
             <option value="No">No podré asistir</option>
@@ -73,18 +73,18 @@ export default function RSVP() {
             value={guests || ""} 
             onChange={(e) => setGuests(e.target.value)}
             required
-            className="w-full border border-pink-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-pink-400 transition"
+            className="w-full border border-[#C2AE8F] rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-[#D9BC8D] transition"
           />
           <button
             type="submit"
-            className="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-transform hover:scale-105"
+            className="bg-[#C2AE8F] hover:bg-[#D9BC8D] text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-transform hover:scale-105"
           >
             Enviar
           </button>
           {error && <p className="text-red-500 mt-2">{error}</p>}
         </form>
       ) : (
-        <p className="z-10 relative text-pink-700 text-xl md:text-2xl mt-6 animate-pulse">
+        <p className="z-10 relative text-[#C2AE8F] text-xl md:text-2xl mt-6 animate-pulse">
           ¡Gracias por confirmar, {name}! 💖
         </p>
       )}

@@ -42,19 +42,19 @@ export default function Navbar() {
     <motion.nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/90 shadow-lg backdrop-blur-md"
-          : "bg-white/40 backdrop-blur-sm"
+          ? "bg-[#f5f5dc]/90 shadow-lg backdrop-blur-md"
+        : "bg-[#f5f5dc]/40 backdrop-blur-sm"
       }`}
       initial={{ y: -80 }}
       animate={{ y: 0 }}
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-3">
         <motion.h1
-          className="text-pink-600 font-serif font-bold text-2xl tracking-wide cursor-pointer"
+          className="text-gray-700 font-serif text-2xl tracking-wide cursor-pointer"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Link to="/">Ana & Carlos 💍</Link>
+          <Link to="/">Mi revelación de género</Link>
         </motion.h1>
 
         {/* Menú escritorio */}
@@ -68,16 +68,16 @@ export default function Navbar() {
           ].map((item) => (
             <motion.li
               key={item.to}
-              whileHover={{ scale: 1.1, color: "#db2777" }}
+              whileHover={{ scale: 1.1, color: "#8e5500ff" }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               <Link
                 to={item.to}
                 className={`transition ${
                   location.pathname === item.to
-                    ? "text-pink-600"
+                    ? "text-[#8e5500ff]"
                     : "text-gray-700"
-                } hover:text-pink-500`}
+                } hover:text-[#C2AE8F]`}
               >
                 {item.label}
               </Link>
@@ -88,7 +88,7 @@ export default function Navbar() {
         {/* Botón menú móvil */}
         <motion.button
           onClick={() => setIsOpen(true)}
-          className="md:hidden text-pink-600 focus:outline-none"
+          className="md:hidden text-white-600 focus:outline-none"
           whileTap={{ scale: 0.9 }}
         >
           <Menu size={30} />
@@ -111,8 +111,7 @@ export default function Navbar() {
               ref={drawerRef}
               className="fixed top-0 right-0 h-full w-3/4 max-w-xs z-50 flex flex-col p-6"
               style={{
-                background:
-                  "linear-gradient(to bottom, rgba(255, 166, 195, 1), #ffffffcc)",
+                
                 backdropFilter: "blur(12px)",
               }}
               variants={drawerVariants}
@@ -147,8 +146,8 @@ export default function Navbar() {
                   >
                     <Link
                       to={item.to}
-                      className={`w-full px-4 py-4 rounded-full bg-white/90 text-center hover:bg-pink-100 hover:text-pink-600 transition ${
-                        location.pathname === item.to ? "text-pink-600 font-semibold" : ""
+                      className={`w-full px-4 py-4 rounded-full bg-[#f5f5dc] text-center hover:bg-white/90 hover:text-[#8e5500ff] transition ${
+                        location.pathname === item.to ? "bg-[#f5f5dc]/90 font-semibold" : ""
                       }`}
                       onClick={() => setIsOpen(false)}
                     >

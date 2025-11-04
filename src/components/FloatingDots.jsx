@@ -9,12 +9,15 @@ export default function FloatingDots({ count = 30 }) {
     let width = canvas.width = canvas.offsetWidth;
     let height = canvas.height = canvas.offsetHeight;
 
+    const colors = ["rgba(210, 140, 54, 0.8)", "rgba(255, 199, 120, 0.8)"];
+
     const dots = Array.from({ length: count }).map(() => ({
       x: Math.random() * width,
       y: Math.random() * height,
       r: Math.random() * 3 + 1,
       dx: (Math.random() - 0.5) * 0.5,
       dy: (Math.random() - 0.5) * 0.5,
+      color: colors[Math.floor(Math.random() * colors.length)] // color aleatorio
     }));
 
     function animate() {
@@ -22,7 +25,7 @@ export default function FloatingDots({ count = 30 }) {
       dots.forEach(dot => {
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, dot.r, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(255,182,193,0.6)"; // color rosado semi-transparente
+        ctx.fillStyle = dot.color;
         ctx.fill();
         dot.x += dot.dx;
         dot.y += dot.dy;

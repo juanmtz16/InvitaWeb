@@ -12,12 +12,12 @@ export default function Gallery() {
 
   return (
     
-    <section className="relative min-h-screen bg-pink-50 py-20 text-center overflow-hidden">
+    <section className="relative min-h-screen bg-[#FFF1D6] py-20 text-center overflow-hidden">
       {/* Canvas de fondo */}
       <canvas id="bg-canvas" className="absolute top-0 left-0 w-full h-full z-0"></canvas>
         <FloatingShapes count={50} />
-      <h2 className="relative z-10 text-4xl font-bold text-pink-600 mb-10">
-        Nuestra Historia 💞
+      <h2 className="relative z-10 text-4xl font-bold text-[#C2AE8F] mb-10">
+        Un poco de nuestra historia 💞
       </h2>
 
       <div className="relative z-10 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4">

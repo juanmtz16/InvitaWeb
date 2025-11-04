@@ -1,60 +1,13 @@
 import { useEffect } from "react";
+import FloatingColorDots from "../components/FloatingColorDots";
 
 export default function Location() {
-  useEffect(() => {
-    const canvas = document.getElementById("bg-canvas");
-    const ctx = canvas.getContext("2d");
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
-    const particles = [];
-
-    const createParticles = () => {
-      for (let i = 0; i < 50; i++) {
-        particles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          radius: Math.random() * 4 + 2,
-          dx: (Math.random() - 0.5) * 0.8,
-          dy: (Math.random() - 0.5) * 0.8,
-          color: `rgba(219, 39, 119, ${Math.random()})`, // pinkish
-        });
-      }
-    };
-
-    const animate = () => {
-      ctx.clearRect(0, 0, width, height);
-      particles.forEach(p => {
-        p.x += p.dx;
-        p.y += p.dy;
-
-        if (p.x < 0 || p.x > width) p.dx = -p.dx;
-        if (p.y < 0 || p.y > height) p.dy = -p.dy;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
-        ctx.fill();
-      });
-      requestAnimationFrame(animate);
-    };
-
-    createParticles();
-    animate();
-
-    const handleResize = () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center text-center bg-pink-50 py-20 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-center items-center text-center bg-[#FFF1D6] py-20 overflow-hidden">
       {/* Canvas de fondo */}
       <canvas id="bg-canvas" className="absolute top-0 left-0 w-full h-full z-0"></canvas>
-
-      <h2 className="relative z-10 text-4xl md:text-5xl font-bold text-pink-600 mb-6">
+      <FloatingColorDots />
+      <h2 className="relative z-10 text-4xl md:text-5xl font-bold text-[#C2AE8F] mb-6">
         Ubicación 📍
       </h2>
       <p className="relative z-10 text-gray-700 mb-10 max-w-xl px-4">

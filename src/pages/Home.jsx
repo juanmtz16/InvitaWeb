@@ -9,13 +9,14 @@ import FloatingDots from "../components/FloatingDots";
 import FloatingColorDots from "../components/FloatingColorDots";
 import FloatingPetalos from "../components/FloatingPetalos";
 import FloatingHeartsCanvas from "../components/FloatingHeartsCanvas";
+import FloatingBaby from "../components/FloatingBaby";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "../index.css";
 
 // Importar imágenes dinámicamente desde la carpeta Galería
-const images = import.meta.glob("/src/assets/Galeria/*.{jpg,jpeg,png,gif}", { eager: true });
+const images = import.meta.glob("/src/assets/Carrusel/*.{jpg,jpeg,png,gif}", { eager: true });
 const photos = Object.values(images).map((img) => img.default || img);
 
 const fadeInUp = {
@@ -37,7 +38,7 @@ export default function Home() {
       {/* Nuestra historia */}
       <motion.section
   id="historia"
-  className="py-20 bg-pink-50 text-center relative"
+  className="py-20 bg-[#FFF1D6] text-center relative"
   variants={fadeInUp}
   initial="hidden"
   whileInView="visible"
@@ -46,31 +47,33 @@ export default function Home() {
   <FloatingDots className="absolute inset-0 -z-10" /> {/* <- z-index bajo */}
   
   <motion.h2
-    className="text-3xl font-bold text-pink-600 mb-6"
+    className="max-w-4xl mx-auto px-6 text-3xl font-bold text-[#C2AE8F] mb-6"
     variants={fadeInUp}
   >
-    Nuestra historia 💕
+    Hola a todos, soy yo… sí, todavía estoy en la pancita, pero ya no puedo esperar por más tiempo 😜👶
   </motion.h2>
   <motion.p
-    className="max-w-2xl mx-auto px-6 text-gray-700 leading-relaxed"
+    className="max-w-4xl mx-auto px-6 text-gray-700 leading-relaxed text-justify"
     variants={fadeInUp}
   >
-    Todo comenzó con una sonrisa, una mirada y un café compartido...
+    He estado planeando algo muy especial y necesito que todos estén presentes para este gran momento.
+    Después de muchas pataditas, siestas interminables y arrumacos con mis papás, ha llegado el momento de revelar si soy un niño travieso o una niña dulce. 
+    Los invito a intentar adivinar mi género antes de que lo revelemos. Pueden vestirse de rosa o azul según su predicción… ¡y no se preocupen, yo estaré observando todo desde aquí dentro! 💖💙
+    Por favor, díganle a mis papás si vendrán antes del 23 de noviembre para que puedan organizar todo a la perfección y asegurarse de que no me quede sin pastel.
   </motion.p>
 </motion.section>
-
 
       {/* Carrusel de fotos */}
 <motion.section
   id="galeria"
-  className="py-16 bg-white text-center relative"
+  className="py-16 bg-[#C2AE8F] text-center relative"
   variants={fadeIn}
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true }}
 >
-  <h2 className="text-3xl font-bold text-pink-600 mb-6">
-    Momentos especiales 📸
+  <h2 className="text-3xl font-bold text-[#FFF1D6] mb-6">
+    Mis papás 📸
   </h2>
   <motion.div
     className="max-w-4xl mx-auto"
@@ -105,7 +108,7 @@ export default function Home() {
       {/* Detalles del evento */}
     <motion.section
     id="evento"
-    className="relative min-h-screen flex flex-col justify-center items-center bg-pink-50 text-center px-6 py-20 overflow-hidden"
+    className="relative min-h-screen flex flex-col justify-center items-center bg-[#FFF1D6] text-center px-6 py-20 overflow-hidden"
     variants={fadeInUp}
     initial="hidden"
     whileInView="visible"
@@ -114,7 +117,7 @@ export default function Home() {
     {/* Canvas de fondo animado */}
     <FloatingHeartsCanvas />
     <motion.h2
-        className="relative z-10 text-4xl md:text-5xl font-bold text-pink-600 mb-12"
+        className="relative z-10 text-4xl md:text-5xl font-bold text-[#C2AE8F] mb-12"
         variants={fadeInUp}
     >
         Detalles del Evento 📅
@@ -130,8 +133,8 @@ export default function Home() {
         transition={{ duration: 0.3 }}
         >
         <h3 className="text-2xl md:text-3xl font-semibold mb-4">Código de Vestimenta</h3>
-        <p className="text-6xl md:text-8xl">👔 👗 👠 🎩</p>
-        <p className="mt-2 text-lg md:text-xl">Formal Elegante ✨</p>
+        <p className="text-6xl md:text-8xl">🧢🧣</p>
+        <p className="mt-2 text-lg md:text-xl">Azul o rojo</p>
         </motion.div>
        <motion.div
         className="bg-white/70 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center"
@@ -151,7 +154,7 @@ export default function Home() {
         >
         <Link
         to="/detalles"
-        className="inline-block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition"
+        className="inline-block bg-[#C2AE8F] text-white px-6 py-2 rounded-full hover:bg-[#D9BC8D] transition"
         >
         Ver mas detalles
         </Link>
@@ -169,7 +172,7 @@ export default function Home() {
         viewport={{ once: true }}
       >
         <FloatingColorDots /> 
-        <h2 className="text-3xl font-bold text-pink-600 mb-6">
+        <h2 className="text-3xl font-bold text-[#C2AE8F] mb-6">
           ¿Nos acompañas? 💌
         </h2>
 
@@ -180,7 +183,7 @@ export default function Home() {
         >
           <Link
             to="/confirmar"
-            className="inline-block bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition"
+            className="inline-block bg-[#C2AE8F] text-white px-6 py-2 rounded-full hover:bg-[#D9BC8D] transition"
           >
             Confirmar asistencia
           </Link>
@@ -189,26 +192,19 @@ export default function Home() {
 
       {/* Footer elegante */}
       <motion.footer
-        className="py-10 bg-pink-100 text-center text-gray-600 relative"
+        className="py-10 bg-[#FFF1D6] text-center text-gray-600 relative"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
+        <FloatingHearts />
         <motion.p
           className="text-lg"
           initial={{ y: 10, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          Con amor, Ana & Carlos 💖
-        </motion.p>
-        <motion.p
-          className="text-sm mt-2"
-          initial={{ y: 10, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.3 }}
-        >
-          © 2026 Nuestra Boda
+          Con mucho amor (y algunas pataditas) ...
         </motion.p>
       </motion.footer>
     </div>
@@ -220,10 +216,10 @@ function HomeHero() {
   return (
     <section
       className="relative h-screen flex flex-col items-center justify-center text-center bg-cover bg-center"
-      style={{ backgroundImage: "url('/foto4.jpg')" }}
+      style={{ backgroundImage: "url('/fondonuevo.jpg')" }}
     >
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-pink-400/20 to-black/50"></div>
-    <FloatingHearts />
+    <FloatingBaby />
       <motion.div
         className="relative z-10 text-white px-6"
         initial={{ opacity: 0, y: 50 }}
@@ -236,7 +232,7 @@ function HomeHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          Ana & Carlos 💍
+          ¡Mis papás quieren compartir mi secreto contigo!
         </motion.h1>
         <motion.p
           className="text-xl md:text-2xl mb-2 drop-shadow-md"
@@ -244,7 +240,7 @@ function HomeHero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
         >
-          ¡Nos casamos!
+          Estoy muy emocionado de invitarte a mi revelación de género. ¡Ven y alegra el corazón de mis papás, Keyla y Antonio!
         </motion.p>
         <motion.p
           className="text-md md:text-lg mb-6 drop-shadow-md"
@@ -252,7 +248,7 @@ function HomeHero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9 }}
         >
-          15 de Marzo, 2026 • Ciudad de México
+          23 de noviembre, 2025 • Gral Escobedo N.L.
         </motion.p>
 
         {/* Cuenta regresiva hero */}
@@ -271,7 +267,7 @@ function HomeHero() {
         >
           <Link
             to="/confirmar"
-            className="inline-block bg-pink-500 hover:bg-pink-600 text-white mt-6 px-8 py-3 rounded-full shadow-lg transition transform hover:scale-105"
+            className="inline-block bg-[#C2AE8F] hover:bg-[#D9BC8D] text-black mt-6 px-8 py-3 rounded-full shadow-lg transition transform hover:scale-105"
           >
             Confirmar asistencia
           </Link>
@@ -312,7 +308,7 @@ function CountdownHero() {
       {Object.entries(timeLeft).map(([unit, value]) => (
         <motion.div
           key={unit}
-          className="bg-white/80 text-pink-600 font-semibold rounded-xl shadow-lg w-20 p-3 flex flex-col items-center"
+          className="bg-white/80 text-black font-semibold rounded-xl shadow-lg w-20 p-3 flex flex-col items-center"
           whileHover={{ scale: 1.1 }}
           transition={{ type: "spring", stiffness: 200 }}
         >
