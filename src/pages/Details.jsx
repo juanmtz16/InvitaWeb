@@ -89,8 +89,8 @@ export default function Details() {
 
       <div className="bg-white/70 p-6 rounded-2xl shadow-lg text-center">
         <h3 className="text-xl font-semibold mb-2">Código de Vestimenta</h3>
-        <p className="text-6xl md:text-8xl">🧢🧣</p>
-        <p className="mt-2 text-lg md:text-xl">Azul o Rojo</p>
+        <p className="text-6xl md:text-8xl">🧢👚</p>
+        <p className="mt-2 text-lg md:text-xl">Azul o Rosa</p>
       </div>
 
       <div className="bg-white/70 p-6 rounded-2xl shadow-lg text-center">

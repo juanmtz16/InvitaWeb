@@ -6,7 +6,8 @@ import Details from "./pages/Details";
 import Gallery from "./pages/Gallery";
 import Location from "./pages/Location";
 import RSVP from "./pages/RSVP";
-import { AudioProvider } from "./components/AudioPlayer"; // 🎵 nuevo
+import { AudioProvider } from "./components/AudioPlayer";
+import Footer from "./components/Footer"; // 💬 importamos el nuevo footer
 
 // Variantes para animaciones entre páginas
 const pageVariants = {
@@ -21,7 +22,7 @@ const pageTransition = {
   duration: 0.6,
 };
 
-// Transiciones con AnimatePresence
+// Componente para manejar transiciones entre páginas
 function AnimatedRoutes() {
   const location = useLocation();
 
@@ -106,9 +107,10 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <Router>
-      <AudioProvider> {/* 🎶 envuelve todo con el proveedor de música */}
+      <AudioProvider>
         <Navbar />
         <AnimatedRoutes />
+        <Footer /> {/* 💬 Footer global en todas las páginas */}
       </AudioProvider>
     </Router>
   );

@@ -133,8 +133,8 @@ export default function Home() {
         transition={{ duration: 0.3 }}
         >
         <h3 className="text-2xl md:text-3xl font-semibold mb-4">Código de Vestimenta</h3>
-        <p className="text-6xl md:text-8xl">🧢🧣</p>
-        <p className="mt-2 text-lg md:text-xl">Azul o rojo</p>
+        <p className="text-6xl md:text-8xl">🧢👚</p>
+        <p className="mt-2 text-lg md:text-xl">Azul o Rosa</p>
         </motion.div>
        <motion.div
         className="bg-white/70 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center"
@@ -171,7 +171,7 @@ export default function Home() {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <FloatingColorDots /> 
+        <FloatingHearts/>
         <h2 className="text-3xl font-bold text-[#C2AE8F] mb-6">
           ¿Nos acompañas? 💌
         </h2>
@@ -188,25 +188,16 @@ export default function Home() {
             Confirmar asistencia
           </Link>
         </motion.div>
-      </motion.section>
-
-      {/* Footer elegante */}
-      <motion.footer
-        className="py-10 bg-[#FFF1D6] text-center text-gray-600 relative"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <FloatingHearts />
         <motion.p
-          className="text-lg"
+          className="text-lg text-[#D9BC8D] px-6 py-2"
           initial={{ y: 10, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}
         >
           Con mucho amor (y algunas pataditas) ...
         </motion.p>
-      </motion.footer>
+      </motion.section>
+
     </div>
   );
 }
@@ -218,7 +209,10 @@ function HomeHero() {
       className="relative h-screen flex flex-col items-center justify-center text-center bg-cover bg-center"
       style={{ backgroundImage: "url('/fondonuevo.jpg')" }}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-pink-400/20 to-black/50"></div>
+<div className="absolute inset-0 bg-gradient-to-b from-[#f5deb3]/40 via-black/40 to-[#f5deb3]/40"></div>
+
+
+
     <FloatingBaby />
       <motion.div
         className="relative z-10 text-white px-6"
