@@ -9,7 +9,6 @@ export default function RSVP() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // 🔄 Limpia campos si el usuario selecciona "No"
   useEffect(() => {
     if (attending === "No") {
       setGuests("");
@@ -22,7 +21,6 @@ export default function RSVP() {
     setError("");
     setLoading(true);
 
-    // 🔍 Validaciones básicas
     if (attending === "Sí" && (!guests || guests < 1)) {
       setError("Por favor indica cuántos adultos asistirán.");
       setLoading(false);
@@ -43,7 +41,6 @@ export default function RSVP() {
           body: JSON.stringify({
             name,
             attending,
-            // 👇 Si no asiste, enviamos vacío en lugar de 0
             guests: attending === "Sí" ? guests : "",
             children: attending === "Sí" ? children : "",
           }),
@@ -67,6 +64,33 @@ export default function RSVP() {
 
   return (
     <section className="relative min-h-screen bg-gradient-to-b from-[#FFF1D6] to-[#FFEAAB] flex flex-col justify-center items-center text-center py-20 overflow-hidden">
+      {/* 🎈 Bolas flotantes de fondo */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {Array.from({ length: 30 }).map((_, i) => {
+          const size = Math.floor(Math.random() * 40) + 20; // 20px a 60px
+          const left = Math.floor(Math.random() * 90); // porcentaje
+          const top = Math.floor(Math.random() * 90); // porcentaje
+          const colors = ["#d6c97cff", "#e3c99bff", "#f7f7aaff", "#ffcc7fff"];
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          const duration = Math.random() * 10 + 8; // 8s a 18s
+
+          return (
+            <div
+              key={i}
+              className="rounded-full opacity-50 absolute"
+              style={{
+                width: `${size}px`,
+                height: `${size}px`,
+                backgroundColor: color,
+                top: `${top}%`,
+                left: `${left}%`,
+                animation: `float ${duration}s ease-in-out infinite alternate`,
+              }}
+            ></div>
+          );
+        })}
+      </div>
+
       <h2 className="text-5xl md:text-6xl font-bold text-[#C2AE8F] mb-10 z-10 drop-shadow-lg">
         Confirma tu asistencia 💌
       </h2>
@@ -76,7 +100,6 @@ export default function RSVP() {
           onSubmit={handleSubmit}
           className="z-10 relative bg-white shadow-2xl rounded-3xl p-10 max-w-md w-full flex flex-col gap-4 transform transition-transform hover:scale-105"
         >
-          {/* Nombre */}
           <input
             type="text"
             placeholder="Tu nombre"
@@ -86,7 +109,6 @@ export default function RSVP() {
             className="w-full border border-[#C2AE8F] rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-[#D9BC8D] transition"
           />
 
-          {/* Selección de asistencia */}
           <select
             value={attending}
             onChange={(e) => setAttending(e.target.value)}
@@ -96,7 +118,6 @@ export default function RSVP() {
             <option value="No">No podré asistir</option>
           </select>
 
-          {/* Mostrar solo si asiste */}
           {attending === "Sí" && (
             <>
               <input
@@ -123,7 +144,6 @@ export default function RSVP() {
             </>
           )}
 
-          {/* Botón con loader */}
           <button
             type="submit"
             disabled={loading}
@@ -152,6 +172,20 @@ export default function RSVP() {
             : `Gracias por avisarnos, ${name}. ¡Te extrañaremos! 💐`}
         </p>
       )}
+
+      <style jsx>{`
+        @keyframes float {
+          0% {
+            transform: translate(0, 0);
+          }
+          50% {
+            transform: translate(10px, -20px);
+          }
+          100% {
+            transform: translate(-10px, 0);
+          }
+        }
+      `}</style>
     </section>
   );
 }

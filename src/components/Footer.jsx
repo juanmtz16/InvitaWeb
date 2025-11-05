@@ -3,7 +3,9 @@ import { useState } from "react";
 
 export default function Footer() {
   const [showTooltip, setShowTooltip] = useState(false);
-  const whatsappLink = "https://wa.me/5218123992302"; // 👉 cambia por tu número con lada
+  const phoneNumber = "5218123992302"; // tu número con lada
+  const message = encodeURIComponent("Hola, quiero cotizar una invitación digital"); // mensaje predeterminado
+  const whatsappLink = `https://wa.me/${phoneNumber}?text=${message}`;
 
   const handleClick = (e) => {
     // Detecta si es un dispositivo táctil

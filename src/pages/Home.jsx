@@ -73,7 +73,7 @@ export default function Home() {
   viewport={{ once: true }}
 >
   <h2 className="text-3xl font-bold text-[#FFF1D6] mb-6">
-    Mis papás 📸
+    Algunos momentos 📸
   </h2>
   <motion.div
     className="max-w-4xl mx-auto"
@@ -133,7 +133,7 @@ export default function Home() {
         transition={{ duration: 0.3 }}
         >
         <h3 className="text-2xl md:text-3xl font-semibold mb-4">Código de Vestimenta</h3>
-        <p className="text-6xl md:text-8xl">🧢👚</p>
+        <p className="text-6xl md:text-8xl">🧢🎀</p>
         <p className="mt-2 text-lg md:text-xl">Azul o Rosa</p>
         </motion.div>
        <motion.div
@@ -242,7 +242,7 @@ function HomeHero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9 }}
         >
-          23 de noviembre, 2025 • Gral Escobedo N.L.
+          23 de noviembre, 2025 <br/> Quinta La Toscana • Vía de Numancia 115, Nueva Castilla, Gral Escobedo N.L.
         </motion.p>
 
         {/* Cuenta regresiva hero */}
