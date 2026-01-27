@@ -85,17 +85,17 @@ export default function Details() {
       <div className="relative z-10 max-w-3xl grid md:grid-cols-2 gap-6 text-gray-700">
         <div className="bg-white/70 p-6 rounded-2xl shadow-lg md:col-span-2">
           <h3 className="text-xl font-semibold mb-2 text-[#ec4899]">Ubicación</h3>
-          <p>Vía de Numancia 115, Nueva Castilla, 66052 Cdad. Gral. Escobedo, N.L.</p>
-          <p>Quinta La Toscana</p>
-          <p>Hora: 4:30 pm</p>
+          <p>C. Canal Medular 329, Barrio Santa Isabel, 64102 Monterrey, N.L.</p>
+          <p>Quinta Medular</p>
+          <p>Sabado 28 de Febrero - Hora: 5:00 pm</p>
         </div>
 
         <div className="bg-white/70 p-6 rounded-2xl shadow-lg text-center">
           <h3 className="text-xl font-semibold mb-2 text-[#ec4899]">
-            Código de Vestimenta
+            No Niños
           </h3>
-          <p className="text-6xl md:text-8xl">🧢🎀</p>
-          <p className="mt-2 text-lg md:text-xl">Azul o Rosa</p>
+          <p className="text-6xl md:text-8xl">🚫👶</p>
+          <p className="mt-2 text-lg md:text-xl"></p>
         </div>
 
         <div className="bg-white/70 p-6 rounded-2xl shadow-lg text-center">

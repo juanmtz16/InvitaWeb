@@ -10,7 +10,6 @@ import FloatingColorDots from "../components/FloatingColorDots";
 import FloatingPetalos from "../components/FloatingPetalos";
 import FloatingHeartsCanvas from "../components/FloatingHeartsCanvas";
 import FloatingBaby from "../components/FloatingBaby";
-import GiftRoulette from "../components/GiftRoulette";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -45,8 +44,11 @@ export default function Home() {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <FloatingDots className="absolute inset-0 -z-10" />
-
+        <img
+            src="/src/assets/conejita.png"
+            alt=""
+            className="absolute bottom-0 right-0 w-40 md:w-56 opacity-20 pointer-events-none z-0"
+          />
         <motion.h2
           className="max-w-4xl mx-auto px-6 text-3xl font-bold text-[#db2777] mb-6"
           variants={fadeInUp}
@@ -128,20 +130,15 @@ export default function Home() {
           variants={fadeIn}
         >
           <motion.div className="bg-white/70 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center">
-            <h3 className="text-2xl md:text-3xl font-semibold mb-4">Código de Vestimenta</h3>
-            <p className="text-6xl md:text-8xl">🧢🎀</p>
-            <p className="mt-2 text-lg md:text-xl">Azul o Rosa</p>
+            <h3 className="text-2xl md:text-3xl font-semibold mb-4">No Niños</h3>
+            <p className="text-6xl md:text-8xl">🚫👶</p>
+            <p className="mt-2 text-lg md:text-xl"></p>
           </motion.div>
 
           <motion.div className="bg-white/70 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center">
             <h3 className="text-2xl md:text-3xl font-semibold mb-4">Regalo</h3>
             <p className="text-6xl md:text-8xl">🎁 💌</p>
           </motion.div>
-        </motion.div>
-
-        <motion.div className="bg-white/70 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center gap-4">
-          <h3 className="text-2xl md:text-3xl font-semibold mb-2">Ruleta de Regalos</h3>
-          <GiftRoulette />
         </motion.div>
 
         <motion.div className="mt-12 relative z-10">

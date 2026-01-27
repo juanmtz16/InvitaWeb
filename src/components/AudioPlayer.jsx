@@ -102,7 +102,7 @@ function MusicButton() {
   return (
     <motion.button
       onClick={togglePlay}
-      className="fixed bottom-5 right-5 bg-[#D9BC8D] hover:bg-[#C2AE8F] text-white rounded-full p-4 shadow-lg z-50 flex items-center justify-center"
+      className="fixed bottom-5 right-5 bg-[#db2777] hover:bg-pink-400 text-white rounded-full p-4 shadow-lg z-50 flex items-center justify-center"
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       transition={{ type: "spring", stiffness: 200 }}

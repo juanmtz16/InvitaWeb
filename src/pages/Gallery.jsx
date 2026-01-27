@@ -21,7 +21,7 @@ export default function Gallery() {
       <FloatingShapes count={50} />
 
       <h2 className="relative z-10 text-4xl font-bold text-[#db2777] mb-10">
-        Un poco de nuestra historia 💞
+        Mi Familia 💞
       </h2>
 
       <div className="relative z-10 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4">

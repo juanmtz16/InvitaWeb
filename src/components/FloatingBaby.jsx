@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 
 export default function FloatingHearts({ count = 25 }) {
-  const emojis = ["👶", "🍼", "🧸", "👣", "💖", "💙", "🎀", "🧦", "🌸", "⭐"];
+  const emojis = ["🐰", "🍼", "🐇", "👣", "💖", "🐰", "🎀", "🐇", "🌸", "💗"];
+
   const icons = Array.from({ length: count });
 
   return (

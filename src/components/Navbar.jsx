@@ -53,7 +53,7 @@ export default function Navbar() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Link to="/">Mi Baby Shower Victoria Colette</Link>
+          <Link to="/">Mi Baby Shower</Link>
         </motion.h1>
 
         {/* Menú escritorio */}
