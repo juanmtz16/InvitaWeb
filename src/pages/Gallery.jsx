@@ -11,12 +11,16 @@ export default function Gallery() {
   const [index, setIndex] = useState(-1);
 
   return (
-    
-    <section className="relative min-h-screen bg-[#FFF1D6] py-20 text-center overflow-hidden">
+    <section className="relative min-h-screen bg-[#fce7f3] py-20 text-center overflow-hidden">
       {/* Canvas de fondo */}
-      <canvas id="bg-canvas" className="absolute top-0 left-0 w-full h-full z-0"></canvas>
-        <FloatingShapes count={50} />
-      <h2 className="relative z-10 text-4xl font-bold text-[#C2AE8F] mb-10">
+      <canvas
+        id="bg-canvas"
+        className="absolute top-0 left-0 w-full h-full z-0"
+      ></canvas>
+
+      <FloatingShapes count={50} />
+
+      <h2 className="relative z-10 text-4xl font-bold text-[#db2777] mb-10">
         Un poco de nuestra historia 💞
       </h2>
 
@@ -26,7 +30,7 @@ export default function Gallery() {
             key={i}
             src={src}
             alt={`Foto ${i + 1}`}
-            className="rounded-2xl shadow-lg hover:scale-105 transition-transform duration-500 cursor-pointer"
+            className="rounded-2xl shadow-lg hover:scale-105 transition-transform duration-500 cursor-pointer border-4 border-[#f9a8d4]/40"
             onClick={() => setIndex(i)}
           />
         ))}
@@ -38,8 +42,12 @@ export default function Gallery() {
           index={index}
           close={() => setIndex(-1)}
           slides={photos.map((src) => ({ src }))}
-          onPrev={() => setIndex((index - 1 + photos.length) % photos.length)}
-          onNext={() => setIndex((index + 1) % photos.length)}
+          onPrev={() =>
+            setIndex((index - 1 + photos.length) % photos.length)
+          }
+          onNext={() =>
+            setIndex((index + 1) % photos.length)
+          }
         />
       )}
     </section>

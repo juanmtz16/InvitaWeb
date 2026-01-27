@@ -63,16 +63,16 @@ export default function RSVP() {
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-b from-[#FFF1D6] to-[#FFEAAB] flex flex-col justify-center items-center text-center py-20 overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-b from-[#fce7f3] to-[#fbcfe8] flex flex-col justify-center items-center text-center py-20 overflow-hidden">
       {/* 🎈 Bolas flotantes de fondo */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {Array.from({ length: 30 }).map((_, i) => {
-          const size = Math.floor(Math.random() * 40) + 20; // 20px a 60px
-          const left = Math.floor(Math.random() * 90); // porcentaje
-          const top = Math.floor(Math.random() * 90); // porcentaje
-          const colors = ["#d6c97cff", "#e3c99bff", "#f7f7aaff", "#ffcc7fff"];
+          const size = Math.floor(Math.random() * 40) + 20;
+          const left = Math.floor(Math.random() * 90);
+          const top = Math.floor(Math.random() * 90);
+          const colors = ["#f9a8d4", "#f472b6", "#fbcfe8", "#fda4af"];
           const color = colors[Math.floor(Math.random() * colors.length)];
-          const duration = Math.random() * 10 + 8; // 8s a 18s
+          const duration = Math.random() * 10 + 8;
 
           return (
             <div
@@ -91,7 +91,7 @@ export default function RSVP() {
         })}
       </div>
 
-      <h2 className="text-5xl md:text-6xl font-bold text-[#C2AE8F] mb-10 z-10 drop-shadow-lg">
+      <h2 className="text-5xl md:text-6xl font-bold text-[#db2777] mb-10 z-10 drop-shadow-lg">
         Confirma tu asistencia 💌
       </h2>
 
@@ -106,13 +106,13 @@ export default function RSVP() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className="w-full border border-[#C2AE8F] rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-[#D9BC8D] transition"
+            className="w-full border border-[#f9a8d4] rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-[#f472b6] transition"
           />
 
           <select
             value={attending}
             onChange={(e) => setAttending(e.target.value)}
-            className="w-full border border-[#C2AE8F] rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-[#D9BC8D] transition"
+            className="w-full border border-[#f9a8d4] rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-[#f472b6] transition"
           >
             <option value="Sí">Sí asistiré</option>
             <option value="No">No podré asistir</option>
@@ -128,7 +128,7 @@ export default function RSVP() {
                 value={guests}
                 onChange={(e) => setGuests(e.target.value)}
                 required
-                className="w-full border border-[#C2AE8F] rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-[#D9BC8D] transition"
+                className="w-full border border-[#f9a8d4] rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-[#f472b6] transition"
               />
 
               <input
@@ -139,7 +139,7 @@ export default function RSVP() {
                 value={children}
                 onChange={(e) => setChildren(e.target.value)}
                 required
-                className="w-full border border-[#C2AE8F] rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-[#D9BC8D] transition"
+                className="w-full border border-[#f9a8d4] rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-[#f472b6] transition"
               />
             </>
           )}
@@ -147,10 +147,10 @@ export default function RSVP() {
           <button
             type="submit"
             disabled={loading}
-            className={`bg-[#C2AE8F] text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-transform ${
+            className={`bg-[#db2777] text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-transform ${
               loading
                 ? "opacity-70 cursor-not-allowed"
-                : "hover:bg-[#D9BC8D] hover:scale-105"
+                : "hover:bg-[#f472b6] hover:scale-105"
             }`}
           >
             {loading ? (
@@ -166,7 +166,7 @@ export default function RSVP() {
           {error && <p className="text-red-500 mt-2">{error}</p>}
         </form>
       ) : (
-        <p className="z-10 relative text-[#C2AE8F] text-xl md:text-2xl mt-6 animate-pulse">
+        <p className="z-10 relative text-[#db2777] text-xl md:text-2xl mt-6 animate-pulse">
           {attending === "Sí"
             ? `¡Gracias por confirmar, ${name}! 💖`
             : `Gracias por avisarnos, ${name}. ¡Te extrañaremos! 💐`}
