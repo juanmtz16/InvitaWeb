@@ -1,24 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-
-const gifts = [
-  "Pañalera",
-  "Mameluco",
-  "Bodys",
-  "Almohada de lactancia",
-  "Biberón",
-  "Esterilizador de biberones",
-  "Calentador de toallitas",
-  "Bañera",
-  "Kit de aseo personal",
-  "Mantas de muselina",
-  "Cepillo para biberón",
-  "Toallita de baño",
-  "Baberos de muselina",
-  "Cambiador Portatil",
-  "Pañales",
-  "Calentador de biberones",
-];
 
 const size = 320;
 const radius = size / 2;
@@ -26,12 +7,15 @@ const textRadius = radius * 0.95;
 const center = radius;
 
 export default function GiftRoulette({ onResult }) {
+  const [gifts, setGifts] = useState([]);
   const [rotation, setRotation] = useState(0);
   const [spinning, setSpinning] = useState(false);
   const [result, setResult] = useState(null);
 
-  const sliceAngle = 360 / gifts.length;
+  // Ángulo de cada porción (se actualiza dinámicamente según regalos)
+  const sliceAngle = gifts.length > 0 ? 360 / gifts.length : 0;
 
+  // Función para dividir texto en máximo 2 líneas
   const splitText = (text, maxChars = 14) => {
     if (text.length <= maxChars) return [text];
 
@@ -39,7 +23,7 @@ export default function GiftRoulette({ onResult }) {
     const lines = [];
     let currentLine = "";
 
-    words.forEach(word => {
+    words.forEach((word) => {
       if ((currentLine + word).length <= maxChars) {
         currentLine += (currentLine ? " " : "") + word;
       } else {
@@ -52,10 +36,34 @@ export default function GiftRoulette({ onResult }) {
     return lines.slice(0, 2);
   };
 
-  const spin = () => {
-    if (spinning || result) return;
+  // Función para convertir coordenadas polares a cartesianas
+  const polarToCartesian = (angle, r = radius) => {
+    const rad = (angle - 90) * (Math.PI / 180);
+    return {
+      x: center + r * Math.cos(rad),
+      y: center + r * Math.sin(rad),
+    };
+  };
 
-    const spins = 5 * 360;
+  // Función para dibujar arco de la ruleta
+  const describeArc = (startAngle, endAngle) => {
+    const start = polarToCartesian(endAngle);
+    const end = polarToCartesian(startAngle);
+    const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
+
+    return `
+      M ${center} ${center}
+      L ${start.x} ${start.y}
+      A ${radius} ${radius} 0 ${largeArcFlag} 0 ${end.x} ${end.y}
+      Z
+    `;
+  };
+
+  // Función para girar la ruleta
+  const spin = () => {
+    if (spinning || result || gifts.length === 0) return;
+
+    const spins = 5 * 360; // 5 vueltas
     const randomOffset = Math.random() * 360;
     const finalRotation = rotation + spins + randomOffset;
 
@@ -74,33 +82,29 @@ export default function GiftRoulette({ onResult }) {
     }, 3500);
   };
 
-  const polarToCartesian = (angle, r = radius) => {
-    const rad = (angle - 90) * (Math.PI / 180);
-    return {
-      x: center + r * Math.cos(rad),
-      y: center + r * Math.sin(rad),
-    };
-  };
+  // Traer regalos disponibles desde Google Sheets
+  useEffect(() => {
+    fetch(
+      "https://script.google.com/macros/s/AKfycbyflvu5oHXPiF9YKtVQg2OZtFku2FRN8Hriffp9-HBNb3ROHz9f4_mKdxyK4RVaeEo/exec" // Cambia TU_SCRIPT_ID por el de tu Google Apps Script
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.gifts) setGifts(data.gifts);
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
-  const describeArc = (startAngle, endAngle) => {
-    const start = polarToCartesian(endAngle);
-    const end = polarToCartesian(startAngle);
-    const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
-
-    return `
-      M ${center} ${center}
-      L ${start.x} ${start.y}
-      A ${radius} ${radius} 0 ${largeArcFlag} 0 ${end.x} ${end.y}
-      Z
-    `;
-  };
+  if (gifts.length === 0)
+    return <p className="text-[#db2777] text-center font-semibold">Cargando...</p>;
 
   return (
     <div className="flex flex-col items-center gap-6">
+      {/* Indicador de flecha */}
       <svg width="30" height="30" className="-mb-3 z-20">
         <polygon points="0,0 30,0 15,25" fill="#ec4899" />
       </svg>
 
+      {/* Ruleta */}
       <svg
         width={size}
         height={size}
@@ -137,11 +141,7 @@ export default function GiftRoulette({ onResult }) {
                   transform={`rotate(${textAngle}, ${textPos.x}, ${textPos.y})`}
                 >
                   {splitText(gift).map((line, idx) => (
-                    <tspan
-                      key={idx}
-                      x={textPos.x}
-                      dy={idx === 0 ? "0" : "1.1em"}
-                    >
+                    <tspan key={idx} x={textPos.x} dy={idx === 0 ? "0" : "1.1em"}>
                       {line}
                     </tspan>
                   ))}
@@ -165,6 +165,7 @@ export default function GiftRoulette({ onResult }) {
         </text>
       </svg>
 
+      {/* Botón */}
       <button
         onClick={spin}
         disabled={spinning || result}
@@ -178,6 +179,7 @@ export default function GiftRoulette({ onResult }) {
         {result ? "Girar ruleta" : spinning ? "Girando..." : "Girar ruleta"}
       </button>
 
+      {/* Resultado */}
       {result && (
         <div className="bg-white px-6 py-3 rounded-xl shadow-md text-[#db2777] font-semibold">
           🎁 Regalo asignado: <strong>{result}</strong>

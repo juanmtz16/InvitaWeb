@@ -4,8 +4,25 @@ import "yet-another-react-lightbox/styles.css";
 import FloatingHearts from "../components/FloatingHearts";
 import FloatingShapes from "../components/FloatingShapes";
 
-const images = import.meta.glob("/src/assets/Galeria/*.{jpg,jpeg,png,gif}", { eager: true });
-const photos = Object.values(images).map((img) => img.default || img);
+const images = import.meta.glob(
+  "/src/assets/Galeria/*.{jpg,jpeg,png,gif}",
+  { eager: true }
+);
+
+// 🔽 ORDENAR IMÁGENES POR NÚMERO EN EL NOMBRE
+const photos = Object.entries(images)
+  .map(([path, img]) => {
+    // Extrae el número del nombre del archivo (ej: 1.jpg → 1)
+    const match = path.match(/(\d+)/);
+    const number = match ? parseInt(match[1], 10) : 0;
+
+    return {
+      src: img.default || img,
+      number,
+    };
+  })
+  .sort((a, b) => a.number - b.number) // orden numérico
+  .map((item) => item.src); // dejamos solo las URLs
 
 export default function Gallery() {
   const [index, setIndex] = useState(-1);

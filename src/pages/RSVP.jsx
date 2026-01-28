@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import GiftRoulette from "../components/GiftRoulette";
+import conejita from "../assets/fondoconejita/conejita.png";
 
 export default function RSVP() {
   const [name, setName] = useState("");
@@ -47,7 +48,7 @@ export default function RSVP() {
 
     try {
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbx4G0vzPGjAwdLLG6stLGVoXxUOg43dSp4iQqHtIqOT4_TdwCd0k0niupBZ1XZ4tmGwEA/exec",
+        "https://script.google.com/macros/s/AKfycbyflvu5oHXPiF9YKtVQg2OZtFku2FRN8Hriffp9-HBNb3ROHz9f4_mKdxyK4RVaeEo/exec",
         {
           method: "POST",
           body: JSON.stringify({
@@ -78,7 +79,11 @@ export default function RSVP() {
   return (
     
     <section className="relative min-h-screen bg-gradient-to-b from-[#fce7f3] to-[#fbcfe8] flex flex-col justify-center items-center text-center py-20 overflow-hidden">
-
+        <img
+          src={conejita}
+          alt=""
+          className="absolute bottom-0 right-0 w-56 md:w-73 opacity-20 pointer-events-none z-0"
+        />
       <h2 className="text-5xl md:text-6xl font-bold text-[#db2777] mb-10">
         Confirma tu asistencia 💌
       </h2>
@@ -126,8 +131,8 @@ export default function RSVP() {
                 className="w-full border bg-gray-100 rounded-xl p-3 text-gray-500"
               />
 
-              <div className="text-left mt-4">
-                <p className="font-semibold text-[#db2777] mb-2">🎁 Regalo</p>
+              <div className="text-left mt-3">
+                <p className="font-semibold text-center text-[#db2777] mb-2">🎁 Dinámica de regalo 🎁</p>
 
                 <label className="flex items-center gap-2 mb-2">
                   <input
@@ -152,7 +157,7 @@ export default function RSVP() {
                       setAssignedGift("");
                     }}
                   />
-                  Participar en la ruleta
+                  Participar en la ruleta 🥳
                 </label>
 
                 {giftOption === "ruleta" && (
